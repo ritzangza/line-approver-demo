@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "line-approver-demo"
+    }
+  },
+  "defaultProject": "line-approver-demo",
+  "cli": {
+    "analytics": false
+  }
 }
