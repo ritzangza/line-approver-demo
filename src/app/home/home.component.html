@@ -1,0 +1,10 @@
+<p>home works!</p>
+<p>isLoggedIn {{ isLoggedIn }}</p>
+<p>userId {{ userProfile.userId }}</p>
+<p>userDisplayName {{ userProfile.displayName }}</p>
+<br />
+
+<p>Parameters</p>
+<div *ngFor="let qS of queryString | keyvalue">
+  {{ qS.key }} - {{ qS.value }}
+</div>
