@@ -233,7 +233,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.jogetProfile = res.data;
         console.log("getUserDetail", res.data);
         console.log("typeof  getUserDetail", typeof res.data);
-        console.log("getUserDetail", res.data[0].id);
+        console.log("getUserDetail", JSON.stringify(res.data));
 
       }else{
         Swal.fire({
