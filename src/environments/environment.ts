@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   endPoint: "http://localhost:8080/jw/api",
-  liffId: '1656926061-0APpnkPM'
+  lineUrl: "https://line-approver-demo.herokuapp.com",
+  liffId: "1656926061-0APpnkPM"
 };
 
 /*

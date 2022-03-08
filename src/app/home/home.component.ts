@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
           this.getUserDetail();
         }).catch(err => console.error(err));
       } else {
-        liff.login({ redirectUri: "/home?activityId=" + this._activityId + "&processId=" + this._processId + "&recordId=" + this._recordId + "" });
+        liff.login({ redirectUri: environment.lineUrl + "/home?activityId=" + this._activityId + "&processId=" + this._processId + "&recordId=" + this._recordId + "" });
       }
     })
     .catch((err) => {
