@@ -232,6 +232,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       if(res.status === 200){
         this.jogetProfile = res.data;
         console.log("getUserDetail", res.data);
+        console.log("typeof  getUserDetail", typeof res.data);
         console.log("getUserDetail", res.data[0].id);
 
       }else{
