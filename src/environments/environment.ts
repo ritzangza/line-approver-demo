@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  endPoint: "http://localhost:8080/jw/api",
+  liffId: '1656926061-0APpnkPM'
 };
 
 /*

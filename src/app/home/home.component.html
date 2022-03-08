@@ -5,6 +5,24 @@
 <br />
 
 <p>Parameters</p>
-<div *ngFor="let qS of queryString | keyvalue">
+<div *ngFor="let qS of _queryString | keyvalue">
   {{ qS.key }} - {{ qS.value }}
+</div>
+<div>
+    <h1>{{ title }}</h1>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <input formControlName="_approval" type="radio" value="Approved" > Approved
+      <input formControlName="_approval" type="radio" value="Rejected" > Rejected
+
+      <div>
+          <label for="remarks" >Remarks</label>
+          <div >
+              <textarea id="remarks" rows="5" formControlName="remarks"></textarea>
+          </div>
+      </div>
+
+      <button id="button" type="submit">
+          Submit
+      </button>
+    </form>
 </div>
