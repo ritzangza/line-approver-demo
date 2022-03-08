@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   userProfile: any;
   jogetProfile: any;
   isLoggedIn: any;
+  isJogetUser = false;
   qString: string;
   _queryString: any;
   form: FormGroup;
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   _recordId: string;
   responseVal: string;
   statusMsg: string;
+  jogetProfileId: String;
 
   private _api_id = "API-52f4b8f3-e97e-4168-a3f6-4b87e641609d";
   private _api_key = "cbe652c4e938423193b7bb8ec580998a";
@@ -100,13 +102,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
         "parent_id": this._recordId,
         "status": this.form.get("_approval").value,
         "remarks": this.form.get("remarks").value,
-        "approver": this.userProfile.displayName,
+        "approver": this.jogetProfileId,
         // "approval_date": "string"
       },
       "trails": [{
         "status": this.form.get("_approval").value,
         "remarks": this.form.get("remarks").value,
-        "approver": this.userProfile.displayName,
+        "approver": this.jogetProfileId,
         // "approval_date": "string"
       }]
     }
@@ -152,7 +154,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       "processId": this._processId,
       "activityId": this._activityId,
       "recordId": this._recordId,
-      "assignmentUser": "string",
+      "assignmentUser": this.jogetProfileId,
       "messages": "string",
       "line_user_id": this.userProfile.userId,
     }
@@ -189,7 +191,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   completeActivities(){
-    let url = environment.endPoint + '/assignment/completeByUser/admin/'+ this._activityId;
+    let url = environment.endPoint + '/assignment/completeByUser/' + this.jogetProfileId + '/'+ this._activityId;
     var dataParams = "?status=" + this.form.get("_approval").value;
     console.log("completeActivities : url", url, dataParams);
     axios.post(url + dataParams, null, this.config)
@@ -230,10 +232,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     .then(res => {
       console.log("res.status", res.status);
       if(res.status === 200){
-        this.jogetProfile = res.data;
+        this.jogetProfile = res.data.data
         console.log("getUserDetail", res.data);
         console.log("typeof  getUserDetail", typeof res.data);
         console.log("getUserDetail", JSON.stringify(res.data));
+        this.jogetProfileId = res.data.data[0].id;
+        console.log("c_line_user_id", res.data.data[0].c_line_user_id + "=== " + this.userProfile.userId);
+        if(res.data.data[0].c_line_user_id === this.userProfile.userId){
+          this.isJogetUser = true;
+        }
 
       }else{
         Swal.fire({

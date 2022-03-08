@@ -8,7 +8,7 @@
 <div *ngFor="let qS of _queryString | keyvalue">
   {{ qS.key }} - {{ qS.value }}
 </div>
-<div>
+<div *ngIf="isJogetUser">
     <h1>{{ title }}</h1>
     <form [formGroup]="form" (ngSubmit)="submitForm()">
       <input formControlName="_approval" type="radio" value="Approved" > Approved
