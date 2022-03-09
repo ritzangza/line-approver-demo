@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endPoint: "http://localhost:8080/jw/api",
+  endPoint: "http://authorwise.co.th:8080/jw/api",
   lineUrl: "https://line-approver-demo.herokuapp.com",
   liffId: "1656926061-0APpnkPM"
 };
