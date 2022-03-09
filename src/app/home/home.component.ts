@@ -204,7 +204,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
           icon: 'success',
           title: 'SUCCESS',
           showConfirmButton: false,
-        })
+        }).then((res) => {
+          console.log("Swal", res);
+          liff.closeWindow()
+        });
       }else{
         Swal.fire({
           icon: 'error',
